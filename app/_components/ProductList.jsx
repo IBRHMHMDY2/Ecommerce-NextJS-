@@ -1,8 +1,14 @@
 import React from 'react'
+import ProductItem from './ProductItem'
 
-function ProductList() {
+function ProductList({products}) {
+  
   return (
-    <div>ProductList</div>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2'>
+      {products.map((product)=>(
+        <ProductItem key={product.id} product={product}/>
+      ))}
+    </div>
   )
 }
 

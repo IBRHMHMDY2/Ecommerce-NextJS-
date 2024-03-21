@@ -37,7 +37,7 @@ function Breadcrumbs({product}) {
 
                     <span
                         
-                        className="flex h-10 items-center bg-white pe-4 ps-8 text-xs font-medium transition hover:text-gray-900"
+                        className="flex h-10 items-center bg-white pe-4 ps-8 text-xs font-medium transition"
                     >
                         {product.title}
                     </span>

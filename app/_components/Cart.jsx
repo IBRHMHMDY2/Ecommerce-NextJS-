@@ -13,13 +13,16 @@ function Cart() {
     <ul className="space-y-4">
         {console.log(cart)}
         {cart?.map((item) => (
-            <li key={item?.id} className="flex items-center gap-4" onClick={()=>setOpenCart(false)}>
+            <li key={item?.id} className="flex items-center gap-4 border-b py-2" onClick={()=>setOpenCart(false)}>
                 <Link href={`/product-details/${item?.product?.id}`} >
+                    <div className='w-[100px] h-[100px] flex items-stretch'>
                     <img
                     src={item?.product?.attributes?.banner?.data?.attributes?.url}
                     alt="Banner Product"
-                    className="size-16 rounded object-cover"
+                    className=" rounded object-cover"
+
                     />
+                    </div>
                 </Link>
                 <div>
                 <h3 className="text-sm text-gray-900">{item?.product?.attributes?.title}</h3>

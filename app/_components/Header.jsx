@@ -109,7 +109,7 @@ function Header() {
                 </div> 
                 :
                 
-                <div className='flex items-center gap-4'>
+                <div className='flex items-center gap-8'>
                     <div className='relative flex items-center gap-6 hover:cursor-pointer' onClick={()=>setOpenCart(!openCart)}>
                         <span className='absolute right-[-12px] top-[-15px] text-center w-6 h-6 rounded-full text-sm bg-slate-200 flex items-center justify-center'>{cart?.length}</span>
                         <ShoppingCart size={32} className='text-primary' />

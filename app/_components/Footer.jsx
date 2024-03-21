@@ -1,10 +1,11 @@
 'use client'
 import { useUser } from '@clerk/nextjs'
-import React from 'react'
+import React, { useState } from 'react'
 
 function Footer() {
+  const [LoggedIn, setLoggedIn] = useState(false);
   const { user } = useUser();
-  return user && (
+  return !LoggedIn && (
     <div>Footer</div>
   )
 }

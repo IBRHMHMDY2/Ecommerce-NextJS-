@@ -16,7 +16,7 @@ function ProductDetails({params}) {
     },[params.productId])
     const getProductsById_ = ()=>{
         ProductApis.getProductsById(params.productId).then(res=>{
-            setProductDetails(res?.data?.data?.attributes);
+            setProductDetails(res?.data?.data);
             getProductSimilars(res?.data?.data);
         });
     }
@@ -30,11 +30,11 @@ function ProductDetails({params}) {
     <div className='px-10 md:px-20 py-8'>
         <Breadcrumbs product={productDetails}/>
         <div className='grid grid-cols-1 md:grid-cols-2 my-5 gap-6'>
-            <ProductBanner banner={productDetails?.banner?.data?.attributes}/>
+            <ProductBanner banner={productDetails?.attributes?.banner?.data?.attributes}/>
             <ProductInfo product={productDetails}/>
         </div>
         <div>
-            <h2 className='text-2xl py-5'>Products Similars</h2>
+            <h2 className='text-2xl py-5'>Similar Products</h2>
             <div>
                 <ProductList products={productSimilars} />
             </div>

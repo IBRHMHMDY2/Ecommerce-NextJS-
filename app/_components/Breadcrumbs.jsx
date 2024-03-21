@@ -39,7 +39,7 @@ function Breadcrumbs({product}) {
                         
                         className="flex h-10 items-center bg-white pe-4 ps-8 text-xs font-medium transition"
                     >
-                        {product.title}
+                        {product?.attributes?.title}
                     </span>
                 </li>
             </ol>

@@ -5,15 +5,18 @@ import { ShoppingCart } from 'lucide-react';
 import Image from 'next/image'
 import { CartContext } from '../_context/CartContext';
 import CartApis from '../_utils/CartApis';
+import Cart from './Cart';
 
 function Header() {
     const [LoggedIn, setLoggedIn] = useState(false);
     const {cart, setCart} = useContext(CartContext);
+    const [openCart, setOpenCart] = useState(false);
     useEffect(()=>{
         setLoggedIn(window.location.href.toString().includes('sign-in'));
     }, []);
     
     const {user} = useUser();
+    
     useEffect(()=>{
         user && getCartItems();
     },[user])
@@ -22,12 +25,12 @@ function Header() {
         CartApis.getUserCartItems(user?.primaryEmailAddress?.emailAddress)
         .then(res => {
             console.log('Cart Loading',res?.data?.data);
-            res?.data?.data?.forEach(cartItem => {
+            res?.data?.data.forEach(cartItem => {
                 setCart((oldCart)=>[
                     ...oldCart,
                     {
                         id: cartItem?.id,
-                        products: cartItem?.attributes?.products?.data[0]
+                        product: cartItem?.attributes?.products?.data[0]
                     }
                 ])
             });
@@ -107,11 +110,12 @@ function Header() {
                 :
                 
                 <div className='flex items-center gap-4'>
-                    <div className='relative flex items-center gap-6 hover:cursor-pointer'>
+                    <div className='relative flex items-center gap-6 hover:cursor-pointer' onClick={()=>setOpenCart(!openCart)}>
                         <span className='absolute right-[-12px] top-[-15px] text-center w-6 h-6 rounded-full text-sm bg-slate-200 flex items-center justify-center'>{cart?.length}</span>
-                        <ShoppingCart size={32} className='text-primary '/>
+                        <ShoppingCart size={32} className='text-primary' />
                     </div>
-                    <UserButton afterSignOutUrl='/'/>
+                    <UserButton afterSignOutUrl='/' />
+                    {openCart && <Cart />}
                 </div>
                     
                 }

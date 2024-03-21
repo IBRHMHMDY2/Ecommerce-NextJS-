@@ -9,7 +9,7 @@ function ProductInfo({product}) {
   const { user } = useUser();
   const {setCart} = useContext(CartContext);
   const router = useRouter();
-  console.log(product)
+
   const handleAddToCart = ()=>{
     if(!user){
       router.push('/sign-in');
@@ -23,7 +23,7 @@ function ProductInfo({product}) {
       }
       CartApis.addToCart(data)
       .then(res => {
-        // console.log('Cart created successfully', res?.data?.data);
+        console.log('Cart created successfully', res?.data?.data);
         setCart((oldCart)=> [
           ...oldCart,
           {

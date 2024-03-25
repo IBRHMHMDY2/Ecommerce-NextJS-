@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { CartContext } from '../_context/CartContext';
+import { CartContext } from '../_context/CartContext'
 import Link from 'next/link';
 
 function Cart() {
@@ -53,14 +53,14 @@ function Cart() {
       </a>
 
       <a
-        href="#"
+        href="/checkout"
         className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
       >
         Checkout
       </a>
 
       <a
-        href="#"
+        href="/"
         className="inline-block text-sm text-gray-500 underline underline-offset-4 transition hover:text-gray-600"
       >
         Continue shopping

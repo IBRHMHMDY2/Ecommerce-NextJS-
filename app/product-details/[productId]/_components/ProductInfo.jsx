@@ -1,9 +1,10 @@
+'use client'
 import { CartContext } from '@/app/_context/CartContext';
 import CartApis from '@/app/_utils/CartApis';
-import { useUser } from '@clerk/nextjs'
-import { ShoppingCart } from 'lucide-react'
+import { useUser } from '@clerk/nextjs';
+import { ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 
 function ProductInfo({product}) {
   const { user } = useUser();

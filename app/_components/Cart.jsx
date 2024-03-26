@@ -5,7 +5,17 @@ import Link from 'next/link';
 function Cart() {
     const [openCart, setOpenCart] = useState(false);
     const {cart, setCart} = useContext(CartContext);
-  return !openCart && (
+    const getTotalPrice = ()=>{
+      let totalPrice = 0;
+      cart.forEach(item => {
+         totalPrice = totalPrice + Number(item?.product?.attributes?.price)
+      });
+      return totalPrice
+  }
+
+
+
+  return !openCart && 
     <div
   className="absolute w-[350px] h-[500px] right-10 top-12 z-10 mx-10 p-5 overflow-auto bg-gray-100 shadow-sm rounded-md border"
 >
@@ -45,19 +55,19 @@ function Cart() {
     </ul>
 
     <div className="space-y-4 text-center">
-      <a
+      <Link
         href="/cart"
         className="block rounded border border-gray-600 px-5 py-3 text-sm text-gray-600 transition hover:ring-1 hover:ring-gray-400"
       >
         View my cart ({cart?.length})
-      </a>
+      </Link>
 
-      <a
-        href="/checkout"
+      <Link
+        href={`/checkout?amount=${getTotalPrice()}`} 
         className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
       >
         Checkout
-      </a>
+      </Link>
 
       <a
         href="/"
@@ -68,7 +78,8 @@ function Cart() {
     </div>
   </div>
 </div>
-  )
+
+  
 }
 
 export default Cart

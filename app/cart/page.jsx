@@ -1,11 +1,13 @@
 'use client'
 import React, { useContext } from 'react'
-import { CartContext } from '../_context/CartContext';
+import { CartContext } from '../_context/CartContext.js';
 import Link from 'next/link';
 import CartApis from '../_utils/CartApis';
+import { useRouter } from 'next/navigation';
 
 function page() {
     const {cart, setCart} = useContext(CartContext);
+    const router = useRouter();
     const getTotalPrice = ()=>{
         let totalPrice = 0;
         cart.forEach(item => {
@@ -79,12 +81,12 @@ function page() {
 
         <div className="mt-8 border-t border-gray-100 pt-4">
             <div className="flex justify-between items-center text-lg">
-                <Link
-                    href="/checkout"
+                <button
+                onClick={()=>router.push(`/checkout?amount=${getTotalPrice()}`)}
                     className="rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                     >
                     Checkout
-                </Link>
+                </button>
                 <div>Total: <span>${getTotalPrice()}</span></div>
             </div>
           </div>

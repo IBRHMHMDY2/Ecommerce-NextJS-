@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import ProductApis from '@/app/_utils/ProductApis';
-import Breadcrumbs from '@/app/_components/Breadcrumbs';
+import ProductApis from '../../_utils/ProductApis.js';
+import Breadcrumbs from '../../_components/Breadcrumbs';
 import ProductBanner from './_components/ProductBanner';
 import ProductInfo from './_components/ProductInfo';
-import ProductList from '@/app/_components/ProductList';
+import ProductList from '../../_components/ProductList';
 
 function ProductDetails({params}) {
     const [productDetails, setProductDetails] = useState({});

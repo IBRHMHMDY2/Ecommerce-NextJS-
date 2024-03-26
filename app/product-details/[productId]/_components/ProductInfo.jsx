@@ -1,6 +1,6 @@
 'use client'
-import { CartContext } from '@/app/_context/CartContext';
-import CartApis from '@/app/_utils/CartApis';
+import { CartContext } from '../../../_context/CartContext.js';
+import CartApis from '../../../_utils/CartApis.js';
 import { useUser } from '@clerk/nextjs';
 import { ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
